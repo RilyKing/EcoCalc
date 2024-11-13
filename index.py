@@ -31,7 +31,7 @@ q5 = tk.Label(frame2,text="How many days a week do you wear clothes made by unsu
 spinbox5 = tk.Spinbox(frame2, from_=0, to=7, width=10, relief="sunken", repeatdelay=300, repeatinterval=7,font=("Arial", 12))
 spinbox5.pack()
 def submit():
-    total = int(spinbox1.get())+int(spinbox2.get())+int(spinbox3.get())+int(spinbox4.get())+int(spinbox5.get())+int(spinbox6.get())+int(spinbox7.get())
+    total = int(spinbox1.get())+int(spinbox2.get())+int(spinbox3.get())+int(spinbox4.get())+int(spinbox5.get())+int(spinbox6.get())
     answer = "You're EcoScore is " + str(total)
     frame2.pack_forget()
     frame3 = tk.Frame(root,bg="#edede9")
