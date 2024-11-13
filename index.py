@@ -17,9 +17,13 @@ spinbox1.pack()
 answers = []
 def changeQ():
     answers.append(spinbox1.get)
+    if len(qList) >= 6:
+        submit.pack_forget()
     q1.config(text = qList.pop())
     spinbox1.config(text = 0)
 def submit():
+    changeQ()
+def finSubmit():
     total = int()
     answer = "You're EcoScore is " + str(total)
     frame2.pack_forget()
@@ -59,6 +63,6 @@ def submit():
     improve1.pack(pady=5)
     improve2.pack(pady=5)
 
-submit = tk.Button(frame2, text="SUBMIT",font=('Arial',14,"bold"),bg="#00FF00",command=submit).pack(pady=(10,0),ipady=5)
-
+finSubmit = tk.Button(frame2, text="FINISH",font=('Arial',14,"bold"),bg="#00FF00",command=finSubmit)
+submit = tk.Button(frame2, text="SUBMIT",font=('Arial',14,"bold"),bg="#00FF00",command=submit)
 root.mainloop()
