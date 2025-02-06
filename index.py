@@ -1,5 +1,13 @@
+'''
+TO DOS: 
+MAKE THE ANSWER SUBMIT FOR FINAL QUESTION
+DELETE QUESTION AFTER SUBMISSION
+MAKE SUGGESTIONS PERSONAL
+'''
+
 #Imports
 import tkinter as tk
+from tkinter import ttk
 
 #set up tkinter window as root
 root = tk.Tk()
@@ -16,30 +24,39 @@ frame2 = tk.Frame(root,bg="#edede9",width=25)
 frame2.pack(ipady=15)
 
 #setting up question and labels
-nextQ = ''
-motto = tk.Label(frame2,text="Answer each of the following questions with a response from 0-7, 0 being no days of the week and 7 being all days of the week",font=('Arial',16),fg="black",width=125).pack(pady=10)
-qList = ["How many days a week do you spend at least 30 min in vehicle with heavy carbon emissions.", "How many days a week do you eat processed and packaged foods", "How many days a week do you eat animal based products.", "How many days a week do you use more than 90 gallons of water", "How many days a week do you fill up your trash can (approx 13 gallon)", "How many days a week do you wear clothes made by unsustainable brands"]
-q1 = tk.Label(frame2,text=nextQ,font=('Arial',16,"bold"))
-spinbox1 = tk.Spinbox(frame2, from_=0, to=7, width=10, relief="sunken", repeatdelay=300, repeatinterval=7,font=("Arial", 12))
+qList = ["How many days a week do you spend at least 30 min in vehicle with heavy carbon emissions.", "How many days a week do you eat processed and packaged foods", "How often do you throw out food waste.", "How many days a week do you use more than 90 gallons of water", "How many days a week do you fill up your trash can (approx 13 gallon)", "How many days a week do you wear clothes made by unsustainable brands"]
+motto = tk.Label(frame2,
+text="Answer each of the following questions with a response from 0-7, 0 being no days of the week and 7 being all days of the week",
+font=('Arial',16),fg="black",width=125
+).pack(pady=10)
+question = ttk.Label(frame1, text = qList.pop(0))
+question.pack(pady = 5, padx = 5)
+scaleInt = tk.IntVar(value = 0)
+slider = tk.Scale(
+frame2,
+variable = scaleInt,
+orient= 'horizontal',
+from_=0,
+to=5
+)
+slider.pack(pady=5,padx=5)
 answers = []
 
 #function to change question after submit button pressed
 def changeQ():
-  nextQ = str(qList[0])
-  qList.remove(qList[0])
-  q1.pack_forget()
-  q1.config(text = nextQ)
-  answers.append(spinbox1.get)
-  if len(qList) <= 0:
-    submit.pack_forget()
-    finSubmit.pack(pady=5)
-  spinbox1.config(text = 0)
-  spinbox1.pack(pady=5)
-  q1.pack(before= spinbox1, pady = 5)
+    question.config(text = qList.pop(0))
+    if len(qList) <= 0:
+        submit.pack_forget()
+        finSubmit.pack(pady=5)
+    answers.append(scaleInt.get())
+    print(answers)
+
   
 #set up final submit button to get total score
 def finSubmit():
     total = int()
+    for x in answers:
+        total += x
     answer = "You're EcoScore is " + str(total)
     frame2.pack_forget()
     frame3 = tk.Frame(root,bg="#edede9")
@@ -79,9 +96,6 @@ def finSubmit():
     info.pack(pady=5)
     improve1.pack(pady=5)
     improve2.pack(pady=5)
-    
-#call change Q to load first question
-changeQ()
 
 #create final and regular submit buttons
 finSubmit = tk.Button(frame2, text="FINISH",font=('Arial',14,"bold"),bg="#00FF00",command=finSubmit)
