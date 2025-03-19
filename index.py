@@ -27,7 +27,7 @@ motto = tk.Label(frame2,
 text="Answer each of the following questions with a response from 0-7, 0 being no days of the week and 7 being all days of the week",
 font=('Arial',16),fg="black",width=125
 ).pack(pady=10)
-question = ttk.Label(frame1, text = qList.pop(0))
+question = ttk.Label(frame2, text = qList.pop(0), font=("Arial",20))
 question.pack(pady = 5, padx = 5)
 scaleInt = tk.IntVar(value = 0)
 slider = tk.Scale(
@@ -35,7 +35,7 @@ frame2,
 variable = scaleInt,
 orient= 'horizontal',
 from_=0,
-to=5
+to=7
 )
 slider.pack(pady=5,padx=5)
 answers = []
@@ -56,14 +56,24 @@ def finSubmit():
     total = int()
     for x in answers:
         total += x
-    answer = "You're EcoScore is " + str(total)
+    answer = "You're EcoScore is..." + str(round((42-total)*(100/42)))
     frame2.pack_forget()
     frame3 = tk.Frame(root,bg="#edede9")
     frame3.pack(ipady=30)
     text1 = tk.Label(frame3,text=answer,font =("Arial",30,"bold"),width=65)
     text1.pack(pady=20)
+    if total <= 14:
+        line = tk.Label(frame3,text="-----------------------------------------------------------------------------------------------------------",bg="#edede9").pack()
+        improve1 = tk.Label(frame3,text="LEGENDARY! You're successfully doing your job and limiting your \nlifestyle's impact on the environment through a \nvariety of practices whether that be by limiting travel \nin vehicels with heavy carbon emissions, buying\n clothes from sustainable brands, and/or limiting water use.", font=("Arial",18,"italic"),bg="#edede9").pack()
+        improve2 = tk.Label(frame3,text="As you have performed well on your own, it is now your\n job to serve as a leader for others. Encourage \nthem to continue or start implementing sustainable \npractices in their day to day lives. If they don't know \nwhere to start show them your own approaches. When\n we work together the better we'll be able to maintain our planet.", font=("Arial",18,"italic"),bg="#edede9").pack()
+    elif total <= 28:
+        improve1 = tk.Label(frame3,text="GREAT. You're on the right track to limiting your lifestyles \nimpact on the environment. While for most/all of \nthe tested behaviors, you spend most of the week practicing \nsustainable methods, there are still a few days to which\nyou should plan on working towards maintaining \nthe sustainable lifestyle.", font=("Arial",18,"italic"),bg="#edede9").pack()
+        improve2 = tk.Label(frame3,text="You can look into many different areas for improvement \nsuch as limiting your time/usage of vehicles with \nheavy carbon emissions, limiting water use, and \nlimiting waste thrown away. As you are an upcoming \nleader in your community, it is important that you invite \nyour family and friends to start practicing sustainable \nmethods too.", font=("Arial",18,"italic"),bg="#edede9").pack()
+    elif total <= 42:
+        improve1 = tk.Label(frame3,text="POOR. You have much work to do to minimize your \nlifestyles impact on the enviornment. For most/all of the tested\n behaviors, you spend most of the week practicing unsustainable \nmethods. You have a lot to learn and must actively start making \na plan to reduce your impact on the enviornment.", font=("Arial",18,"italic"),bg="#edede9").pack()
+        improve2 = tk.Label(frame3,text="There are many ways you can look to improve your score,\nbut make sure not to overwhelm yourself with tasks. \nFocus on one of these six sides, and stick to it \nuntil it becomes a habit. Then while maintaining that, \nhabit look to improve in another way. Eventually you'll\n be scoring as a well as a Legendary!",font=("Arial",18,"italic"),bg="#edede9").pack()
     setImprove()
-s
+
     
     # tells you what to improve based on score
 def findWorst():
@@ -100,16 +110,16 @@ def setImprove():
     
 
         
-    #     info = tk.Label(frame3,text="43-49: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", font=("Arial",16,"italic"))
-    #     improve1 = tk.Label(frame3,text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut \nenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor \nin reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, \nsunt in culpa qui officia deserunt mollit anim id est laborum.", font=("Arial",16,"italic"))
-    #     improve2 = tk.Label(frame3,text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut \nenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor \nin reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, \nsunt in culpa qui officia deserunt mollit anim id est laborum.", font=("Arial",16,"italic"))
-    # info.pack(pady=5)
-    # improve1.pack(pady=5)
-    # improve2.pack(pady=5)
+    #info = tk.Label(frame3,text="43-49: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", font=("Arial",16,"italic"))
+    #improve1 = tk.Label(frame3,text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut \nenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor \nin reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, \nsunt in culpa qui officia deserunt mollit anim id est laborum.", font=("Arial",16,"italic"))
+    #improve2 = tk.Label(frame3,text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut \nenim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor \nin reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, \nsunt in culpa qui officia deserunt mollit anim id est laborum.", font=("Arial",16,"italic"))
+    #info.pack(pady=5)
+    #improve1.pack(pady=5)
+    #improve2.pack(pady=5)
 
 #create final and regular submit buttons
 finSubmit = tk.Button(frame2, text="FINISH",font=('Arial',14,"bold"),bg="#00FF00",command=finSubmit)
-submit = tk.Button(frame2, text="SUBMIT",font=('Arial',14,"bold"),bg="#00FF00",command=changeQ)
+submit = tk.Button(frame2, text="NEXT",font=('Arial',14,"bold"),bg="#00FF00",command=changeQ)
 submit.pack(pady = 5)
 
 #creates loop to keep window open
