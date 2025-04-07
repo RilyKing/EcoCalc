@@ -10,9 +10,9 @@ from tkinter import ttk
 #set up tkinter window as root
 root = tk.Tk()
 root.geometry("700x700")
-root.configure(bg='#28282B')
+root.configure(bg='#91c7a3')
 scrollbar = tk.Scrollbar(root)
-root.title("Software Design")
+root.title("Software Design: Team #21732")
 
 #setting up frame
 frame1 = tk.Frame(root,bg="#50ad6f",width = 50)
@@ -22,7 +22,7 @@ frame2 = tk.Frame(root,bg="#edede9",width=25)
 frame2.pack(ipady=15)
 
 #setting up question and labels
-qList = ["How many days a week do you spend at least 30 min in vehicle with heavy carbon emissions.", "How many days a week do you eat processed and packaged foods", "How often do you throw out food waste.", "How many days a week do you use more than 90 gallons of water", "How many days a week do you fill up your trash can (approx 13 gallon)", "How many days a week do you wear clothes made by unsustainable brands"]
+qList = ["How many days a week do you spend at least 30 min in vehicle with heavy carbon emissions.", "How many days a week do you eat processed and packaged foods", "How many days a week do you throw out food waste.", "How many days a week do you use more than 90 gallons of water", "How many days a week do you fill up your trash can (approx 13 gallon)", "How many days a week do you wear clothes made by unsustainable brands"]
 motto = tk.Label(frame2,
 text="Answer each of the following questions with a response from 0-7, 0 being no days of the week and 7 being all days of the week",
 font=('Arial',16),fg="black",width=125
