@@ -1,8 +1,3 @@
-'''
-TO DOS: 
-MAKE SUGGESTIONS PERSONAL
-'''
-
 #Imports
 import tkinter as tk
 from tkinter import ttk
